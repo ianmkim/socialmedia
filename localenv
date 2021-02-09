@@ -1,0 +1,1 @@
+export CONNSTRING="mongodb+srv://maindbuser:Ds03Nh08Ms06@wagetracker.gonwy.mongodb.net/socialmedia?retryWrites=true&w=majority"
