@@ -29,3 +29,10 @@ source localenv
 cd pytools
 python3 upload.py
 ```
+
+# Upload to heroku
+This repo comes with a Dockerfile you can use with heroku, just replace the <YOUR APP NAME> with your app name on heroku
+```
+heroku container:push web --app <YOUR APP NAME> && heroku container:release --app <YOUR APP NAME>
+```
+
