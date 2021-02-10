@@ -9,6 +9,8 @@ import (
     "github.com/gofiber/fiber/v2/middleware/cors"
     "github.com/gofiber/template/django"
     "go.mongodb.org/mongo-driver/mongo/options"
+
+    jwtware "github.com/gofiber/jwt/v2"
     "github.com/parvusvox/socialmedia/routes"
 )
 
@@ -43,6 +45,14 @@ func main(){
     }))
 
     app.Static("/static", "./static")
+
+    app.Post("/login", routes.Login)
+    app.Post("/register", routes.Register)
+
+    // all routes beyond this line is protected through JWT
+    app.Use(jwtware.New(jwtware.Config{
+        SigningKey : []byte(os.Getenv("SECRET")),
+    }))
 
     // gets all users
     // requires int page and int limit for pagination
