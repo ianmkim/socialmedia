@@ -36,6 +36,8 @@ This repo comes with a Dockerfile you can use with heroku, just replace the <YOU
 heroku container:push web --app <YOUR APP NAME> && heroku container:release --app <YOUR APP NAME>
 ```
 
+# Authentication
+This backend uses Javascript Web Tokens (JWT). h
 # API Usage
 ```
 GET /users?page=<int>&limit=<int>
