@@ -37,8 +37,26 @@ heroku container:push web --app <YOUR APP NAME> && heroku container:release --ap
 ```
 
 # Authentication
-This backend uses Javascript Web Tokens (JWT). h
+This backend uses Javascript Web Tokens (JWT). I only use a SHA256 hashing for password storage but that's obviously insecure, but it'll do for this toy project. In prod I would at the minimum do SHA512 + salting or use a third party authentication provider. The expiration for the tokens are set to 24 hours after time of creation.
+```
+POST /login
+BODY {
+  "email": string,
+  "password": string,
+}
+```
+```
+POST /register
+BODY {
+  "email": string,
+  "password": string,
+  "username" : string,
+}
+```
+
 # API Usage
+All of these routes are protected through JWT, provide JWT token from /login as bearer token in your request header.
+
 ```
 GET /users?page=<int>&limit=<int>
 BODY empty
